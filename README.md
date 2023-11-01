@@ -1,0 +1,2 @@
+# Music genre classification by album cover using cnn
+ Overview: The project aims to leverage Convolutional Neural Networks (CNN) to automatically classify music genres based on album cover images. By harnessing the power of deep learning and computer vision techniques, the system will be trained to identify intricate patterns and features within album cover art, enabling it to make accurate predictions about the corresponding music genre.
