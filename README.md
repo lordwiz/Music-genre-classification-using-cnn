@@ -27,24 +27,24 @@ This project aims to classify music genres using spectrogram images generated fr
 
 **Clone the repository:**
 
-'''
+```
 git clone https://github.com/username/music-genre-classification.git
-'''
+```
 
 #Install the required dependencies:
 
-'''
+```
 pip install -r requirements.txt
-'''
+```
 
 #Usage
 
 Place your audio files in the specified directory.
 Run the script classify_music.py to generate spectrogram images and predict the music genre:
 
-'''
+```
 python classify_music.py
-'''
+```
 
 The predicted genre for each audio file will be displayed in the console.
 
