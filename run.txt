@@ -1,0 +1,2 @@
+cd "d:/Mini Project/music_classification"
+& "Project\music_classification\venv\Scripts\python.exe" "run.py"

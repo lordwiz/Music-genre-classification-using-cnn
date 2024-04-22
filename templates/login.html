@@ -1,0 +1,49 @@
+{% include 'header.html'%}
+
+<body>
+    <div class="col-lg-5 col-12 mx-auto">
+        <form class="custom-form ebook-download-form bg-white shadow" action="/check_login" method="post" role="form">
+            <div class="text-center mb-5">
+                <h2 class="mb-1">LOGIN</h2>
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {%if info%}
+                        <p>{{info}}</p>
+                    {%endif%}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            
+            </div>
+
+            <div class="ebook-download-form-body">
+                <div class="input-group mb-4">
+                    <input type="text" name="uname" id="uname" class="form-control" aria-label="ebook-form-name" aria-describedby="basic-addon1" placeholder="User Name" required="">
+
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="custom-form-icon bi-person"></i>
+                    </span>
+                </div>
+
+                <div class="input-group mb-4">
+                    <input type="password" name="pass" id="pass" class="form-control" placeholder="Password" aria-label="ebook-form-email" aria-describedby="basic-addon2" required="">
+
+                    <span class="input-group-text" id="basic-addon2">
+                        <i class="custom-form-icon bi-envelope"></i>
+                    </span>
+                </div>
+
+                <div class="col-lg-8 col-md-10 col-8 mx-auto">
+                    <button type="submit" class="form-control">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+        <!-- JAVASCRIPT FILES -->
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/click-scroll.js"></script>
+<script src="/static/js/custom.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+
+</body>
+</html>

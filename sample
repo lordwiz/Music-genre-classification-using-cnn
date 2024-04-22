@@ -1,0 +1,115 @@
+from flask import Flask, render_template, request, flash
+
+
+app = Flask(__name__)
+app.secret_key = "thomas"
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+    
+
+
+@app.route('/login', methods=['POST','GET'])
+def login():
+    return render_template('login.html')
+    check()
+
+def check():
+    database = {'admin':'admin'}
+    uname=request.form['uname']
+    passw=request.form['pass']
+    if uname not in database :
+        
+        return render_template('login.html',info='WRONG USERNAME OR PASSWORD')
+    else:
+        if database[uname] != passw:
+            
+            return render_template('login.html',info='WRONG USERNAME OR PASSWORD')
+        else:
+            return render_template('prediction.html',info='WELCOME TO MUSIC CLASSIFIER')
+
+    
+
+@app.route('/prediction', methods=['POST','GET'])
+def phome():
+    return render_template('prediction.html',info='WELCOME TO MUSIC CLASSIFIER')
+
+def prediction():
+    aud = request.files['aud']
+    aud_path = "./images" + aud.filename
+    aud.save(aud_path)
+    return render_template('prediction.html',info='FILE IS UPLOADED')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
+
+
+
+
+
+
+from flask import Flask, render_template, request, flash
+from cv2 import cv2
+from librosa import librosa
+from librosa import display
+from numpy import numpy as np
+from matplotlib import pyplot as plt
+from tensorflow.keras.models import load_model
+from sklearn.preprocessing import MinMaxScaler
+
+app = Flask(__name__)
+app.secret_key = "thomas"
+
+model = load_model('imageclass.h5')  # Replace with the actual path to your model
+class_labels = ['Blue', 'Classical', 'Country', 'Disco', 'Hiphop', 'Jazz', 'Metal', 'Pop', 'Reggae', 'Rock']
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    return render_template('login.html')
+
+@app.route('/check_login', methods=['POST'])
+def check_login():
+    database = {'admin': 'admin'}
+    uname = request.form['uname']
+    passw = request.form['pass']
+
+    if uname not in database or database[uname] != passw:
+        return render_template('login.html', info='WRONG USERNAME OR PASSWORD')
+
+    return render_template('prediction.html', info='WELCOME TO MUSIC CLASSIFIER')
+
+@app.route('/prediction', methods=['POST', 'GET'])
+def phome():
+    return render_template('prediction.html', info='WELCOME TO MUSIC CLASSIFIER')
+
+@app.route('/predict_music', methods=['POST'])
+def predict_music():
+    aud = request.files['aud']
+    aud_path = "./images/" + aud.filename
+    aud.save(aud_path)
+
+    # Load the external audio file
+    y, sr = librosa.load(aud_path)
+
+    # ... (rest of your model prediction code)
+
+    # Make predictions using the loaded model
+    predictions = model.predict(np.expand_dims(spectrogram_resized, axis=0))
+
+    # Get the predicted label
+    predicted_label = class_labels[np.argmax(predictions)]
+
+    return render_template('prediction.html', info=f'Predicted Label: {predicted_label}')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+

@@ -1,0 +1,41 @@
+{% include 'pheader.html'%}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <h6 align="center"><p>{{info}}</p></h6>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<body>
+    <br>
+                    <div class="col-lg-5 col-12 mx-auto">
+                        <form class="custom-form ebook-download-form bg-white shadow" action="/predict_music" method="POST" enctype="multipart/form-data" role="form">
+                                <div class="text-center mb-5">
+                                    <h2 class="mb-1">Upload your song here</h2>
+                                </div>
+
+                            <div class="ebook-download-form-body">
+                                <div class="d-none d-lg-block" >  
+                                    <input type="file" id="aud" name="aud" accept="audio/wav"></input><!-- duplicated above one for mobile -->
+                                </div>
+
+                                <br>
+                                <br>
+                                
+                                <div class="col-lg-8 col-md-10 col-8 mx-auto">
+                                    <button type="submit" id="submit" value="Upload" class="form-control">Predict</button>
+                                </div>
+                                <br>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <h6 color="red" align="center"> {%if Predicted%} <p>{{Predicted}}</p> {%endif%}</h6>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                            </div>
+                        </form>
+                    </div>
+
+        
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/click-scroll.js"></script>
+<script src="/static/js/custom.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+</body>
+</html>
