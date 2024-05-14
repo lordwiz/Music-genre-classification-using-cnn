@@ -28,7 +28,7 @@ This project aims to classify music genres using spectrogram images generated fr
 **Clone the repository:**
 
 ```
-git clone https://github.com/username/music-genre-classification.git
+git clone https://github.com/thomasantony12/Music-genre-classification-using-cnn.git
 ```
 
 # Install the required dependencies:
